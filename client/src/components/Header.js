@@ -13,23 +13,24 @@ import EditNoteOutlinedIcon from '@mui/icons-material/EditNoteOutlined';
 function Header() {
 
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [loginUser, setLoginUser] = useState("")
+  const [loginUser, setLoginUser] = useState({})
   const open = Boolean(anchorEl);
+  
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     const userLogin = localStorage.getItem("loginuser")
-    setLoginUser(userLogin);
+    setLoginUser(JSON.parse(userLogin));
   })
 
   const handleLogout = () => {
-    localStorage.removeItem("loginuser")
+    localStorage.removeItem("loginuser");
     navigate("/")
   }
 
@@ -58,7 +59,7 @@ function Header() {
                   aria-haspopup="true"
                   aria-expanded={open ? 'true' : undefined}
                 >
-                  <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+                  <Avatar sx={{ width: 32, height: 32 }}></Avatar>
                 </IconButton>
               </Tooltip>
               <Menu
@@ -96,7 +97,7 @@ function Header() {
                 transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
               >
-                <MenuItem onClick={()=>navigate("/profile")}>
+                <MenuItem onClick={() => navigate("/profile")}>
                   <Avatar /> Profile
                 </MenuItem>
                 <MenuItem >
@@ -111,7 +112,7 @@ function Header() {
                   </ListItemIcon>
                   Logout
                 </MenuItem>
-              
+
               </Menu>
             </li>
           ) : (

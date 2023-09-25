@@ -10,6 +10,26 @@ router.get('/api/users', async (req, res) => {
     res.json(users);
 });
 
+
+router.get('/api/user/:id', (req, res) => {
+    try {
+
+        const userId = req.params.id;
+        console.log("userId",userId)
+
+        // Find the item by ID
+        const userData = User.find((user) => user._id === userId);
+        console.log("userData", userData)
+        if (userData) {
+            res.json(userData); // Respond with the userData as JSON
+        } else {
+            res.status(404).json({ error: 'userData not found' });
+        }
+    } catch (error) {
+
+    }
+});
+
 router.post('/api/users/register', async (req, res) => {
     try {
         const { formData } = req.body;

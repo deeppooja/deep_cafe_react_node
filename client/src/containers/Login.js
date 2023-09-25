@@ -23,8 +23,9 @@ export default function Login() {
             }
             const result = await axios.post('http://localhost:5000/api/users/login', { formData: {email:email,password:password} });
             if (result) {
+              const userData = result.data.data || {};
                 if (result.data.status === true) {
-                  localStorage.setItem("loginuser",result.data.data.email)
+                  localStorage.setItem("loginuser",JSON.stringify(userData))
                   navigate('/profile')
                 } else {
                     toast.error(result.data.message || "Something went wrong")

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const databaseUrl = 'mongodb://127.0.0.1:27017/mern_app';
+const databaseUrl = 'mongodb://127.0.0.1:27017/deep_cafe';
 
 mongoose.connect(databaseUrl, {
     useNewUrlParser: true,

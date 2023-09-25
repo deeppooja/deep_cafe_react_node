@@ -1164,10 +1164,24 @@ section.contactus {
   margin-top: -50px;
 }
 
-.login_form {
+/* .login_form {
   color: white;
   margin-left: 27%;
   max-width: 500px;
-  background-image:url("../public/images/burger.avif");
   padding: 20px;
+} */
+
+.login,
+.image {
+  min-height: 100vh;
 }
+
+.bg-image {
+  background-image: url('../public/images/burger.avif');
+  background-size: cover;
+  background-position: center center;
+}
+
+
+
+
